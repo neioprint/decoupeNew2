@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimiseur de Découpe de Papier</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Optimiseur de Découpe</h1>
+            <p>Maximisez l'utilisation de vos feuilles de papier</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="form-group">
+                    <label for="sheet-width">Largeur de la feuille (cm)</label>
+                    <input type="number" id="sheet-width" min="1" step="0.1" value="65">
+                </div>
+                <div class="form-group">
+                    <label for="sheet-height">Hauteur de la feuille (cm)</label>
+                    <input type="number" id="sheet-height" min="1" step="0.1" value="100">
+                </div>
+
+                <div class="piece-inputs">
+                    <h3>Pièces à découper</h3>
+                    <div id="pieces-container">
+                        <div class="piece-input">
+                            <label>Largeur (cm)</label>
+                            <input type="number" class="piece-width" min="0.1" step="0.1" value="21.5">
+                            <label>Hauteur (cm)</label>
+                            <input type="number" class="piece-height" min="0.1" step="0.1" value="28.5">
+                            <button class="remove-piece">-</button>
+                        </div>
+                    </div>
+                    <button id="add-piece">Ajouter une pièce</button>
+                </div>
+
+                <div class="algorithm-selection">
+                    <div class="form-group">
+                        <label for="algorithm-select">Algorithme</label>
+                        <select id="algorithm-select">
+                            <option value="greedy">Algorithme Glouton</option>
+                            <option value="backtracking">Backtracking</option>
+                            <option value="genetic">Algorithme Génétique</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sort-strategy">Stratégie de tri</label>
+                        <select id="sort-strategy">
+                            <option value="area-descending">Surface décroissante</option>
+                            <option value="longest-side">Côté le plus long</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="allow-rotation" checked>
+                        <label for="allow-rotation">Autoriser la rotation des pièces</label>
+                    </div>
+                </div>
+
+                <button id="optimize-btn">Optimiser la découpe</button>
+            </section>
+
+            <section class="visualization-section">
+                <div class="canvas-container">
+                    <canvas id="optimizationCanvas"></canvas>
+                </div>
+                <div class="stats-container">
+                    <h3>Résultats</h3>
+                    <div id="optimization-stats">
+                        <p>Taux d'utilisation : <span id="utilization-rate">-</span>%</p>
+                        <p>Nombre de poses : <span id="piece-count">-</span></p>
+                        <p>Espace résiduel : <span id="residual-space">-</span> cm²</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p> 2025 Optimiseur de Découpe</p>
+        </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
